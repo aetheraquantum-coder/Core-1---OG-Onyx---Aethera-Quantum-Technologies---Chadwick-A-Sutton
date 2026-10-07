@@ -1,0 +1,21 @@
+{
+  "synthetic": true,
+  "fixtureNote": "Invented demonstration data; no private or observed reports.",
+  "schema": "aethera-game-design-handoff/v1",
+  "learning": {
+    "stats": {
+      "synthetic-clue": {
+        "helpYes": 4,
+        "helpNo": 1,
+        "funYes": 0,
+        "funNo": 1
+      },
+      "synthetic-answer": {
+        "helpYes": 1,
+        "helpNo": 1,
+        "funYes": 0,
+        "funNo": 1
+      }
+    }
+  }
+}

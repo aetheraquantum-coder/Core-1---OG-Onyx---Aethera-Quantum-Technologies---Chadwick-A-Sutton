@@ -1,0 +1,119 @@
+{
+  "version": "0.2.1-candidate",
+  "director": "Chadwick Sutton",
+  "enforce": false,
+  "services": {
+    "antivirus": "fixture-only",
+    "firewall": "synthetic-policy",
+    "vpn": "plan-only-unavailable"
+  },
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 1106,
+      "sha256": "33af899375ebaed0cb7c649bf86a3a0dc12a2863d2eb3097289b6ff23f0ea4d8"
+    },
+    {
+      "path": "PATCH.md",
+      "bytes": 873,
+      "sha256": "eac2771322a0903c64830e0fcfccbe90f1ace4f7e223f1e1d400d6c1cd8c1e67"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5005,
+      "sha256": "34f32010f4013dbc2de1b8d48ec5e5f359d9ab9e77f908c00c188dba36d1d06a"
+    },
+    {
+      "path": "SECURITY.md",
+      "bytes": 468,
+      "sha256": "5b30d1a2d5fad48f350bb750fdb39a8c55e1dfcc874492f858035a354b042630"
+    },
+    {
+      "path": "START_WINDOWS.bat",
+      "bytes": 171,
+      "sha256": "9b3739022c72ba77c9155d1f99fd66a8f947ace0564015c39f32d1f9e28e5f7e"
+    },
+    {
+      "path": "VERSION",
+      "bytes": 16,
+      "sha256": "81054d78f27594074c0f3927a8dbee9e1edc4057497402cd540934e1572950de"
+    },
+    {
+      "path": "cli.py",
+      "bytes": 1126,
+      "sha256": "e5195926d8925c6f860cb3fa0a9afc1d832bd9a859fadeb29e20ef56f78887dc"
+    },
+    {
+      "path": "mantis_os.py",
+      "bytes": 9825,
+      "sha256": "7455eebc45b1d2ef498a9d638973f12622958e4ac16460f0ccaed64485d1b928"
+    },
+    {
+      "path": "tests/test_mantis_os.py",
+      "bytes": 2114,
+      "sha256": "aff94077969b15890c2a2e29545912b715af32b45b648aa4e38a4caadbef56fc"
+    },
+    {
+      "path": "tests/test_network_regressions.py",
+      "bytes": 816,
+      "sha256": "19807846781e9d0232ed22f21f4125cf244f4014e03688c1bec196ed63f074a2"
+    },
+    {
+      "path": "tests/test_policy_validation.py",
+      "bytes": 2952,
+      "sha256": "2cca55c2a57439f922c021a7a9373c99083a685f6ede91ca3c5c5a1562cd12c0"
+    },
+    {
+      "path": "web/README.txt",
+      "bytes": 5058,
+      "sha256": "4f8c924006d28ca7e15737fed38e75714a1cfdf72cc2e0d47d3212c90d62ede2"
+    },
+    {
+      "path": "web/autosave.js",
+      "bytes": 2456,
+      "sha256": "9f4bea9c882190c4c1c397c2aae1874e935ebe1129abae3f9f080da9b3dca69a"
+    },
+    {
+      "path": "web/exchange-core.js",
+      "bytes": 977,
+      "sha256": "ada4562ddf63d36649532a307fb8c21f8e6e2207ee883ee88c4a4151ce06dbc7"
+    },
+    {
+      "path": "web/exchange-ui.js",
+      "bytes": 3084,
+      "sha256": "bb9e3b3c0cbeda5cadf508eba81f9c5a1fb157ecfc45f665095b01f0df23c1f3"
+    },
+    {
+      "path": "web/favicon.svg",
+      "bytes": 230,
+      "sha256": "5e2a68e780ed1e5edc6f359b5a8cb136a1da126507c5d9881f1b4f41de935b06"
+    },
+    {
+      "path": "web/index.html",
+      "bytes": 6349,
+      "sha256": "52a5ed3e97c313fcaed41cde0b7c7f9b5e5e9b607315e6a2fb12ea9432228667"
+    },
+    {
+      "path": "web/navigation.css",
+      "bytes": 2716,
+      "sha256": "1050fb5bb093aa612e40c5d7992c618f5d77fd12e2b9862895b3160ad46f5062"
+    },
+    {
+      "path": "web/result-events.js",
+      "bytes": 1332,
+      "sha256": "23ec2fcd7b5d5598fc26f4473208ff405a42e661d93d4c65092169f3ac67ce3c"
+    },
+    {
+      "path": "web/security-plans.js",
+      "bytes": 3111,
+      "sha256": "4c207ca1fa7c24196af21f8e9dd31e2994fa86eaebfefc564ace3dfb4dfb2b3b"
+    },
+    {
+      "path": "web/tokens.css",
+      "bytes": 1185,
+      "sha256": "ce801e7d7d96e4c2437441c5abdacde12151dc9c7d14585dc34bb6df24f083ae"
+    }
+  ],
+  "license": "MIT",
+  "releasePackage": "core-1-og-onyx/0.3.0"
+}

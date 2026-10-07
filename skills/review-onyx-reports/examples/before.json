@@ -1,0 +1,7 @@
+{
+  "schema": "aethera-iterations/v1",
+  "results": [
+    { "blocked": false, "max": 0.2 },
+    { "blocked": true, "max": 0.7 }
+  ]
+}

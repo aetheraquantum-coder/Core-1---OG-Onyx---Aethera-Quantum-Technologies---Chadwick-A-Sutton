@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "core-1-og-onyx",
+  "version": "0.3.0",
+  "description": "Summarize, compare and visualize Aethera reports with the preserved Onyx engine; explore Praying Mantis synthetic planning through a separate local companion.",
+  "author": {
+    "name": "Chadwick A. Sutton (Aethera Quantum Technologies)"
+  },
+  "license": "MIT",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Core 1 - OG Onyx",
+        "shortDescription": "Visualize and compare reports",
+        "longDescription": "A focused skills-only package containing the unchanged original OnyxCore with its bounded Node.js adapter and offline visual reports, plus a separately named Praying Mantis planning companion requiring Python 3.10+ for its CLI. Onyx summarizes five supported Aethera schemas, compares reports, and returns fixed next-test advice. Mantis offers inert fixture matching, synthetic firewall classification and syntax-only VPN plans, with enforcement disabled. It is not live antivirus, a host firewall or a VPN client. Reports remain unverified. Includes synthetic examples and tests; no hosted service, account connection, model training or broader Onyx Foundation modules. Preparation does not establish installed-host compatibility or public-directory availability.",
+        "category": "Productivity",
+        "defaultPrompt": [
+          "Use Core 1 - OG Onyx to compare and visualize these two JSON reports.",
+          "Summarize this Aethera report with the original Onyx core.",
+          "Create the included synthetic visual showcase.",
+          "Run the Praying Mantis companion’s inert fixture example and explain its limits."
+        ],
+        "logo": "./assets/icon.svg",
+        "composerIcon": "./assets/icon.svg"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "synthetic": true,
+  "fixtureNote": "Invented demonstration data; no private or observed reports.",
+  "schema": "aethera-health-export/v1",
+  "pages": [
+    {
+      "at": 0,
+      "issues": [
+        {
+          "active": true
+        }
+      ]
+    },
+    {
+      "at": 8640000000000000,
+      "issues": [
+        {
+          "active": false
+        }
+      ]
+    }
+  ]
+}
