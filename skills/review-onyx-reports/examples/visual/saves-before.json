@@ -1,0 +1,15 @@
+{
+  "synthetic": true,
+  "fixtureNote": "Invented demonstration data; no private or observed reports.",
+  "schema": "aethera-save-export/v1",
+  "records": [
+    {
+      "schema": "aethera-save/v1",
+      "id": "synthetic-save-0"
+    },
+    {
+      "schema": "aethera-save/v1",
+      "id": "synthetic-save-1"
+    }
+  ]
+}

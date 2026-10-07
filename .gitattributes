@@ -3,3 +3,6 @@
 
 # Preserve the SHA-256-pinned original engine on every checkout, including Windows.
 skills/review-onyx-reports/scripts/onyx-core.js text eol=lf
+
+# Keep companion manifest source digests stable on Windows checkouts.
+skills/review-mantis-plans/resources/praying-mantis/** text eol=lf

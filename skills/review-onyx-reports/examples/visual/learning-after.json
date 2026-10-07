@@ -1,0 +1,19 @@
+{
+  "synthetic": true,
+  "fixtureNote": "Invented demonstration data; no private or observed reports.",
+  "schema": "aethera-game-learning/v1",
+  "stats": {
+    "synthetic-jump": {
+      "helpYes": 3,
+      "helpNo": 1,
+      "funYes": 2,
+      "funNo": 1
+    },
+    "synthetic-puzzle": {
+      "helpYes": 2,
+      "helpNo": 1,
+      "funYes": 1,
+      "funNo": 1
+    }
+  }
+}
