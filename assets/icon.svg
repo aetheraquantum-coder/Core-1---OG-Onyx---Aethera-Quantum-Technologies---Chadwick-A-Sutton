@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Onyx core emblem">
+  <rect x="8" y="8" width="240" height="240" rx="56" fill="#17191d" stroke="#e8ecef" stroke-width="8"/>
+  <path d="M128 38 205 83 205 173 128 218 51 173 51 83Z" fill="none" stroke="#e8ecef" stroke-width="10" stroke-linejoin="round"/>
+  <path d="m128 64 54 32v64l-54 32-54-32V96Z" fill="#343942"/>
+  <path d="m111 105 20-14v75m-20 0h40" fill="none" stroke="#ffffff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

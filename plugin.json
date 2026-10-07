@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "core-1-og-onyx",
+  "version": "0.1.0",
+  "description": "Run the preserved original Onyx report-summary, comparison and next-test logic on selected JSON reports in a Node.js-capable environment.",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Core 1 - OG Onyx",
+        "shortDescription": "Compare and review JSON",
+        "longDescription": "A focused skills-only package for the unchanged original OnyxCore. Summarize supported Aethera JSON reports, compare two reports of the same schema, and return the original rule-based next-test advice. Requires an available Node.js execution environment. Reports are user-supplied and not independently verified. The package includes a bounded local runner, synthetic examples and tests. No hosted service, account connection, broader Onyx Foundation modules or model training is included. Package preparation does not establish installed ChatGPT compatibility or public-directory availability.",
+        "category": "Productivity",
+        "defaultPrompt": [
+          "Use Core 1 - OG Onyx to compare these two JSON reports.",
+          "Summarize this Aethera report with the original Onyx core.",
+          "Run the included synthetic comparison example."
+        ],
+        "logo": "./assets/icon.svg",
+        "composerIcon": "./assets/icon.svg"
+      }
+    }
+  }
+}

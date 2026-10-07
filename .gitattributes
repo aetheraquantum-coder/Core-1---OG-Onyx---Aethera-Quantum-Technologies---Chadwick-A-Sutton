@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Preserve the SHA-256-pinned original engine on every checkout, including Windows.
+skills/review-onyx-reports/scripts/onyx-core.js text eol=lf
