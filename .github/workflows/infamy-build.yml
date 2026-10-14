@@ -10,6 +10,28 @@ concurrency:
   group: infamy-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  preflight:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Build tooling regressions
+        run: python3 -m unittest discover -s infamy/tool/tests -v
+      - name: Required native build inputs
+        shell: bash
+        run: |
+          input_status=0
+          python3 infamy/tool/check_build_inputs.py > infamy-build-inputs.json || input_status=$?
+          cat infamy-build-inputs.json
+          exit "$input_status"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: Infamy-build-inputs
+          path: infamy-build-inputs.json
+          if-no-files-found: warn
   verify:
     runs-on: ubuntu-22.04
     timeout-minutes: 25
@@ -42,7 +64,7 @@ jobs:
             infamy-workspace/evidence/
           if-no-files-found: warn
   build:
-    needs: verify
+    needs: [verify, preflight]
     strategy:
       fail-fast: false
       matrix:

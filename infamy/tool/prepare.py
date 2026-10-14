@@ -1,6 +1,7 @@
 """Create platform runners from the pinned Flutter SDK; overlay inspected source."""
 from pathlib import Path
 import shutil,subprocess,hashlib,base64,os
+import xml.etree.ElementTree as ET
 root=Path(__file__).resolve().parents[2]
 src=root/'infamy'; app=root/'infamy-workspace'
 if not app.exists():
@@ -20,7 +21,21 @@ shutil.copy2(root/'LICENSE',app/'assets/Onyx-LICENSE.txt')
 logo=src/'assets/logo.webp.b64'
 if logo.exists(): (app/'assets/logo.webp').write_bytes(base64.b64decode(logo.read_text(),validate=True))
 manifest=app/'android/app/src/main/AndroidManifest.xml'
-t=manifest.read_text(); t=t.replace('<application','<uses-permission android:name="android.permission.INTERNET"/>\n    <application android:allowBackup="false" android:networkSecurityConfig="@xml/network_security_config"'); t=t.replace('android:label="infamy"','android:label="Infamy"'); manifest.write_text(t)
+android_uri='http://schemas.android.com/apk/res/android'
+android='{'+android_uri+'}'
+ET.register_namespace('android',android_uri)
+tree=ET.parse(manifest)
+document=tree.getroot()
+application=document.find('application')
+if application is None: raise RuntimeError('Android manifest has no application element')
+application.set(android+'allowBackup','false')
+application.set(android+'networkSecurityConfig','@xml/network_security_config')
+application.set(android+'label','Infamy')
+internet=[p for p in document.findall('uses-permission') if p.get(android+'name')=='android.permission.INTERNET']
+if not internet:
+    document.insert(0,ET.Element('uses-permission',{android+'name':'android.permission.INTERNET'}))
+for duplicate in internet[1:]: document.remove(duplicate)
+tree.write(manifest,encoding='utf-8',xml_declaration=True)
 xml=app/'android/app/src/main/res/xml'; xml.mkdir(exist_ok=True)
 (xml/'network_security_config.xml').write_text('<?xml version="1.0" encoding="utf-8"?><network-security-config><base-config cleartextTrafficPermitted="false"/><domain-config cleartextTrafficPermitted="true"><domain>localhost</domain><domain>127.0.0.1</domain><domain>::1</domain></domain-config></network-security-config>')
 gradle=app/'android/app/build.gradle.kts'
