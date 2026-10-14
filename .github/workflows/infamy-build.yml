@@ -1,0 +1,85 @@
+name: Infamy Windows and Android owner build
+on:
+  push:
+    branches: ['infamy/owner-build-20261014']
+    paths: ['infamy/**', '.github/workflows/infamy-build.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: infamy-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Pinned Flutter SDK
+        shell: bash
+        run: |
+          git clone --depth 1 --branch 3.35.7 https://github.com/flutter/flutter.git "$RUNNER_TEMP/flutter"
+          test "$(git -C "$RUNNER_TEMP/flutter" rev-parse HEAD)" = adc901062556672b4138e18a4dc62a4be8f4b3c2
+          echo "$RUNNER_TEMP/flutter/bin" >> "$GITHUB_PATH"
+      - run: flutter config --no-analytics
+      - run: python infamy/tool/prepare.py
+      - run: flutter pub get
+        working-directory: infamy-workspace
+      - name: Test suite
+        run: flutter test --reporter expanded
+        working-directory: infamy-workspace
+      - name: Analyze
+        run: flutter analyze --no-fatal-infos
+        working-directory: infamy-workspace
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: Infamy-test-evidence
+          path: |
+            infamy-workspace/pubspec.lock
+            infamy-workspace/evidence/
+          if-no-files-found: warn
+  build:
+    needs: verify
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            target: Android
+          - os: windows-2022
+            target: Windows
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Pinned Flutter SDK
+        shell: bash
+        run: |
+          git clone --depth 1 --branch 3.35.7 https://github.com/flutter/flutter.git "$RUNNER_TEMP/flutter"
+          test "$(git -C "$RUNNER_TEMP/flutter" rev-parse HEAD)" = adc901062556672b4138e18a4dc62a4be8f4b3c2
+          echo "$RUNNER_TEMP/flutter/bin" >> "$GITHUB_PATH"
+      - run: flutter config --no-analytics
+      - run: python infamy/tool/prepare.py
+      - run: flutter pub get
+        working-directory: infamy-workspace
+      - name: Android release owner-test APK
+        if: matrix.target == 'Android'
+        run: flutter build apk --release --target-platform android-arm64
+        working-directory: infamy-workspace
+      - name: Windows release application
+        if: matrix.target == 'Windows'
+        run: flutter build windows --release
+        working-directory: infamy-workspace
+      - name: Package and inspect
+        run: python infamy/tool/package.py ${{ matrix.target }}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: Infamy-${{ matrix.target }}-0.1.0
+          path: infamy-delivery/*
+          if-no-files-found: error
+          retention-days: 30

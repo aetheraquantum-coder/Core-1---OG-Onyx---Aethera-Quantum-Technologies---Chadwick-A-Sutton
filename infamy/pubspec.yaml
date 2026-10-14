@@ -1,0 +1,26 @@
+name: infamy
+description: Casper-powered connected research and creation workspace.
+publish_to: none
+version: 0.1.0+1
+environment:
+  sdk: '>=3.8.0 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  crypto: 3.0.6
+  path: 1.9.1
+  path_provider: 2.1.5
+  sqflite: 2.4.2
+  sqflite_common_ffi: 2.3.6
+  sqlite3_flutter_libs: 0.5.39
+  flutter_secure_storage: 10.0.0
+  file_picker: 10.3.3
+  flutter_js: 0.8.7
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: 5.0.0
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
